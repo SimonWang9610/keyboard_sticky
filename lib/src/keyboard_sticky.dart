@@ -6,11 +6,18 @@ import 'field_builder_delegate.dart';
 
 const int _kVisibilityTolerance = 1;
 
+/// [KeyboardStickyController] is a mixin class that provides the ability to show/hide the floating widget manually.
 abstract mixin class KeyboardStickyController {
+  /// whether the original widget is visible
   bool get visible;
+
+  /// the current height of the keyboard
   double get keyboardHeight;
 
+  /// show the floating widget manually
   void showFloating();
+
+  /// hide the floating widget manually
   void hideFloating();
 }
 
