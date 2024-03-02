@@ -78,7 +78,7 @@ class _AttachableTextFieldExampleState
           floatingBuilder: (context, controller, field) {
             return InputDecorator(
               decoration: const InputDecoration(
-                labelText: "Floating for Single Original",
+                labelText: "Sync text from original text field",
                 border: OutlineInputBorder(),
               ),
               child: ListenableBuilder(
@@ -101,7 +101,7 @@ class _AttachableTextFieldExampleState
               },
               child: InputDecorator(
                 decoration: const InputDecoration(
-                  labelText: "Original for Single Floating",
+                  labelText: "Sync text from floating text field",
                   border: OutlineInputBorder(),
                 ),
                 child: ListenableBuilder(
@@ -119,7 +119,7 @@ class _AttachableTextFieldExampleState
                 focusNode.unfocus();
               },
               decoration: const InputDecoration(
-                labelText: "Only Floating",
+                labelText: "only floating text field",
                 border: OutlineInputBorder(),
               ),
             );
@@ -144,7 +144,7 @@ class _AttachableTextFieldExampleState
                 focusNode.unfocus();
               },
               decoration: const InputDecoration(
-                labelText: "Keyboard Sticky 2",
+                labelText: "Original Text field",
                 border: OutlineInputBorder(),
               ),
             );
@@ -157,7 +157,7 @@ class _AttachableTextFieldExampleState
                 focusNode.unfocus();
               },
               decoration: const InputDecoration(
-                labelText: "Floating 2",
+                labelText: "Floating text field",
                 border: OutlineInputBorder(),
               ),
             );
