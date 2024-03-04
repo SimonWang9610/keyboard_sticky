@@ -1,3 +1,4 @@
+import 'package:example/sticky_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:keyboard_sticky/keyboard_sticky.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: Scaffold(
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text("Keyboard Sticky Example"),
         ),
@@ -95,9 +96,8 @@ class _AttachableTextFieldExampleState
           builder: (context, controller, field) {
             return GestureDetector(
               onTap: () {
-                if (!controller.visible) {
-                  controller.showFloating();
-                }
+                print("show floating");
+                controller.showFloating();
               },
               child: InputDecorator(
                 decoration: const InputDecoration(
@@ -164,6 +164,11 @@ class _AttachableTextFieldExampleState
           },
         ),
         const SizedBox(height: 20),
+        const StickyDropdownExample(),
+        const SizedBox(
+          height: 20,
+          child: ColoredBox(color: Colors.red),
+        ),
       ],
     );
   }

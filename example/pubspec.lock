@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
+  dropdown_overlay:
+    dependency: "direct main"
+    description:
+      name: dropdown_overlay
+      sha256: "940ee0d3ee8e977e67470060aa96243ad89cd992d4cdb867c74edb67fbe154d1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   fake_async:
     dependency: transitive
     description:
