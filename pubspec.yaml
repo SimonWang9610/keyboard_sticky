@@ -1,7 +1,8 @@
 name: keyboard_sticky
 description: "A UI component can sticky widget on the top of soft keyboard."
 version: 0.1.0
-homepage:
+homepage: https://github.com/SimonWang9610/keyboard_sticky
+repository: https://github.com/SimonWang9610/keyboard_sticky
 
 environment:
   sdk: '>=3.2.6 <4.0.0'

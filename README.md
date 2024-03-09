@@ -19,25 +19,25 @@ A UI component allowing sticky widget on the top of soft keyboard.
 
 > If no soft keyboard or the original widget is not overlapped, the sticky widget will not be shown.
 
-- Sticky a floating `TextField` and syncing the text with the original `TextField`
+- Sticky a floating `TextField` and syncing the text with the original `TextField` [example](https://github.com/SimonWang9610/keyboard_sticky/blob/main/example/lib/both.dart)
 
     <div style="float:left">
       <img src="https://github.com/SimonWang9610/keyboard_sticky/blob/main/snapshots/both.gif" width=400>
     </div>
 
-- Sticky a custom widget and syncing the text with the original `TextField`
+- Sticky a custom widget and syncing the text with the original `TextField` [example](https://github.com/SimonWang9610/keyboard_sticky/blob/main/example/lib/only_original.dart)
 
     <div style="float:left">
       <img src="https://github.com/SimonWang9610/keyboard_sticky/blob/main/snapshots/only-original.gif" width=400>
     </div>
 
-- Sticky a `TextField` and syncing its text with the original non-TextField widget
+- Sticky a `TextField` and syncing its text with the original non-TextField widget.[example](https://github.com/SimonWang9610/keyboard_sticky/blob/main/example/lib/only_floating.dart)
 
     <div style="float:left">
       <img src="https://github.com/SimonWang9610/keyboard_sticky/blob/main/snapshots/only-floating.gif" width=400>
     </div>
 
-- Sticky a search bar on the top of the keyboard and syncing the selected item with the original widget/`TextField`
+- Sticky a search bar on the top of the keyboard and syncing the selected item with the original widget/`TextField`. [example](https://github.com/SimonWang9610/keyboard_sticky/blob/main/example/lib/sticky_dropdown.dart)
 
     <div style="float:left">
       <img src="https://github.com/SimonWang9610/keyboard_sticky/blob/main/snapshots/dropdown.gif" width=400>
