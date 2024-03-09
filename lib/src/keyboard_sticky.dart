@@ -62,7 +62,7 @@ class KeyboardSticky extends StatefulWidget {
 
   /// A shortcut to create a [KeyboardSticky] that only shows one [TextField] either in the original or floating widget.
   ///
-  /// if [forFloating] is true, [fieldBuilder] will be used to build a [TextField] used by [builder];
+  /// if [floating] is true, [fieldBuilder] will be used to build a [TextField] used by [builder];
   /// otherwise, [fieldBuilder] will be used to build a [TextField] used by [floatingBuilder].
   ///
   /// The original widget built from [builder] will be shown when the keyboard is not visible.
@@ -70,12 +70,9 @@ class KeyboardSticky extends StatefulWidget {
   ///
   /// [controller] would be bound with [fieldBuilder] if provided.
   ///
-  /// [focusNode] would be bound with [fieldBuilder] if provided and [forFloating] is false.
+  /// [focusNode] would be bound with [fieldBuilder] if provided and [floating] is false.
   ///
-  /// [floatingFocusNode] would be bound with [floatingBuilder] if provided and [forFloating] is true.
-  ///
-  /// If [forFloating] is true, and the original widget will not include a [TextField],
-  /// it is user's responsibility to manage the floating widget properly via [KeyboardStickyController].
+  /// [floatingFocusNode] would be bound with [floatingBuilder] if provided and [floating] is true.
   ///
   /// Please be sure to use the given [FocusNode] in the [TextField] built from [fieldBuilder],
   /// so as to listen to the focus changes and then show/hide the floating widget automatically.
@@ -85,20 +82,20 @@ class KeyboardSticky extends StatefulWidget {
     FocusNode? focusNode,
     TextEditingController? controller,
     FocusNode? floatingFocusNode,
-    bool forFloating = false,
+    bool floating = false,
     this.useMaterial = true,
     required KeyboardStickyWrapperBuilder builder,
     required KeyboardStickyWrapperBuilder floatingBuilder,
     required KeyboardStickyFieldBuilder fieldBuilder,
   })  : delegate = KeyboardStickyChildBuilderDelegate(
           wrapperBuilder: builder,
-          fieldBuilder: !forFloating ? fieldBuilder : null,
+          fieldBuilder: !floating ? fieldBuilder : null,
           focusNode: focusNode,
           controller: controller,
         ),
         floatingDelegate = KeyboardStickyChildBuilderDelegate(
           wrapperBuilder: floatingBuilder,
-          fieldBuilder: forFloating ? fieldBuilder : null,
+          fieldBuilder: floating ? fieldBuilder : null,
           focusNode: floatingFocusNode,
           controller: controller,
         );

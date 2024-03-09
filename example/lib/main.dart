@@ -1,6 +1,8 @@
+import 'package:example/both.dart';
+import 'package:example/only_floating.dart';
+import 'package:example/only_original.dart';
 import 'package:example/sticky_dropdown.dart';
 import 'package:flutter/material.dart';
-import 'package:keyboard_sticky/keyboard_sticky.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,152 +24,38 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Keyboard Sticky Example"),
         ),
-        body: const AttachableTextFieldExample(),
+        body: const Padding(
+          padding: EdgeInsets.all(15),
+          child: AttachableTextFieldExample(),
+        ),
       ),
     );
   }
 }
 
-class AttachableTextFieldExample extends StatefulWidget {
+class AttachableTextFieldExample extends StatelessWidget {
   const AttachableTextFieldExample({super.key});
 
   @override
-  State<AttachableTextFieldExample> createState() =>
-      _AttachableTextFieldExampleState();
-}
-
-class _AttachableTextFieldExampleState
-    extends State<AttachableTextFieldExample> {
-  final TextEditingController _controllerForOriginal = TextEditingController();
-  final TextEditingController _controllerForFloating = TextEditingController();
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controllerForOriginal.dispose();
-    _controllerForFloating.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const Text("Placeholder"),
-        const Spacer(),
-        KeyboardSticky.single(
-          controller: _controllerForOriginal,
-          builder: (context, controller, field) {
-            return Material(
-              elevation: 4,
-              child: field,
-            );
-          },
-          fieldBuilder: (context, controller, focusNode) {
-            return TextField(
-              controller: controller,
-              focusNode: focusNode,
-              onTapOutside: (_) {
-                focusNode.unfocus();
-              },
-              decoration: const InputDecoration(
-                labelText: "Only original",
-                border: OutlineInputBorder(),
-              ),
-            );
-          },
-          floatingBuilder: (context, controller, field) {
-            return InputDecorator(
-              decoration: const InputDecoration(
-                labelText: "Sync text from original text field",
-                border: OutlineInputBorder(),
-              ),
-              child: ListenableBuilder(
-                listenable: _controllerForOriginal,
-                builder: (_, __) => Text(_controllerForOriginal.text),
-              ),
-            );
-          },
-        ),
-        const SizedBox(height: 20),
-        KeyboardSticky.single(
-          controller: _controllerForFloating,
-          forFloating: true,
-          builder: (context, controller, field) {
-            return GestureDetector(
-              onTap: () {
-                print("show floating");
-                controller.showFloating();
-              },
-              child: InputDecorator(
-                decoration: const InputDecoration(
-                  labelText: "Sync text from floating text field",
-                  border: OutlineInputBorder(),
-                ),
-                child: ListenableBuilder(
-                  listenable: _controllerForFloating,
-                  builder: (_, __) => Text(_controllerForFloating.text),
-                ),
-              ),
-            );
-          },
-          fieldBuilder: (context, controller, focusNode) {
-            return TextField(
-              controller: controller,
-              focusNode: focusNode,
-              onTapOutside: (_) {
-                focusNode.unfocus();
-              },
-              decoration: const InputDecoration(
-                labelText: "only floating text field",
-                border: OutlineInputBorder(),
-              ),
-            );
-          },
-          floatingBuilder: (context, controller, field) {
-            return field!;
-          },
-        ),
-        const SizedBox(height: 20),
-        KeyboardSticky.both(
-          builder: (_, controller, field) {
-            return Material(
-              elevation: 4,
-              child: field,
-            );
-          },
-          fieldBuilder: (inner, controller, focusNode) {
-            return TextField(
-              controller: controller,
-              focusNode: focusNode,
-              onTapOutside: (_) {
-                focusNode.unfocus();
-              },
-              decoration: const InputDecoration(
-                labelText: "Original Text field",
-                border: OutlineInputBorder(),
-              ),
-            );
-          },
-          floatingFieldBuilder: (inner, controller, focusNode) {
-            return TextField(
-              controller: controller,
-              focusNode: focusNode,
-              onTapOutside: (_) {
-                focusNode.unfocus();
-              },
-              decoration: const InputDecoration(
-                labelText: "Floating text field",
-                border: OutlineInputBorder(),
-              ),
-            );
-          },
-        ),
-        const SizedBox(height: 20),
-        const StickyDropdownExample(),
-        const SizedBox(
-          height: 20,
-          child: ColoredBox(color: Colors.red),
-        ),
+        Spacer(),
+        Text("Text would be sent to the floating widget"),
+        SizedBox(height: 5),
+        OnlyOriginalExample(),
+        SizedBox(height: 20),
+        Text("Text would be sent back to the original widget"),
+        SizedBox(height: 5),
+        OnlyFloatingExample(),
+        SizedBox(height: 20),
+        Text("Text sync between both fields"),
+        SizedBox(height: 5),
+        BothFieldsExample(),
+        SizedBox(height: 20),
+        StickyDropdownExample(),
+        SizedBox(height: 20),
+        Text("Bottom placeholder"),
       ],
     );
   }
